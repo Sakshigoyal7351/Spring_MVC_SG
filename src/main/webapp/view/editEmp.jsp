@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,9 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Employee Management System</a>
@@ -33,52 +34,50 @@
     </div>
   </div>
 </nav>
-
-
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-6 offset-md-3">
 			<div class="card">
-				<div class="card">
-					<div class="card-header text-center ">
-						<h4>All Employee Details</h4>
-					</div>
-						<div class="card-body">
-							<table class="table">
-  <thead>
-  
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Email</th>
-       <th scope="col">Password</th>
-        <th scope="col">Designation</th>
-         <th scope="col">Salary</th>
-         <th scope="col">Actions</th>
-    </tr>
-    
-    
-  </thead>
-  <tbody>
-  <c:forEach items ="${empList}" var="emp">
-    <tr>
-      <th scope="row">${emp.id}</th>
-      <td>${emp.fullName}</td>
-      <td>${emp.address}</td>
-      <td>${emp.email}</td>
-      <td>${emp.password }</td>
-      <td>${emp.designation}</td>
-      <td>${emp.salary}</td>
-      <td> <a href="editEmp/${emp.id}" class="btn btn-sm btn-primary">Edit</a>
-       <a href="deleteEmp/${emp.id}" class="btn btn-sm btn-danger">Delete</a></td>
-    </tr>
-   </c:forEach>
-    
-  </tbody>
-</table>
+				<div class="card-header text-center">
+					<h3>Edit Employee</h3>
+				</div>
+				<div class="card-body">
+					<form action="${pageContext.request.contextPath}/updateEmp" method="post">
 					
+					<input type="hidden" name="id" value="${emp.id }" >
+					
+					<div class="mb-3">
+						<label>Enter Full Name</label>
+						<input type="text" name="fullName" class="form-control" value="${emp.fullName}">
 					</div>
+					
+					<div class="mb-3">
+						<label>Enter Address</label>
+						<input type="text" name="address" class="form-control" value="${emp.address}">
+					</div>
+					
+					<div class="mb-3">
+						<label>Enter Email</label>
+						<input type="email" name="email" class="form-control" value="${emp.email}">
+					</div>
+					
+					<div class="mb-3">
+						<label>Enter Password</label>
+						<input type="password" name="password" class="form-control" value="${emp.password}">
+					</div>
+					
+					<div class="mb-3">
+						<label>Enter Designation</label>
+						<input type="text" name="designation" class="form-control" value="${emp.designation}">
+					</div>
+					
+					<div class="mb-3">
+						<label>Enter Salary</label>
+						<input type="text" name="salary" class="form-control" value="${emp.salary}">
+					</div>
+					
+					<button class="btn btn-primary">Submit</button>
+					</form>
 				</div>
 			</div>
 		</div>
